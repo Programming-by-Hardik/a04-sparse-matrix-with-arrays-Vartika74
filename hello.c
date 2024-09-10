@@ -33,8 +33,19 @@ int main() {
 // Function to convert a matrix into sparse matrix format
 void createSparseMatrix(int sparseMatrix[][3], int originalMatrix[][N], int rows, int cols) {
     //WRITE THE FUNCTION DESCRIPTION HERE
-    
 
+    int k = 0;  // k will track the number of non-zero elements
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            if (originalMatrix[i][j] != 0) {
+                sparseMatrix[k][0] = i;         // Row index
+                sparseMatrix[k][1] = j;         // Column index
+                sparseMatrix[k][2] = originalMatrix[i][j]; // Non-zero value
+                k++;
+            }
+        }
+    }
+}
 
 
 
@@ -47,7 +58,12 @@ void createSparseMatrix(int sparseMatrix[][3], int originalMatrix[][N], int rows
 // Function to print sparse matrix representation
 void printSparseMatrix(int sparseMatrix[][3], int nonZeroCount) {
     //WRITE THE FUNCTION DESCRIPTION HERE
-    
+   
+    printf("Row\tCol\tValue\n");
+    for (int i = 0; i < nonZeroCount; i++) {
+        printf("%d\t%d\t%d\n", sparseMatrix[i][0], sparseMatrix[i][1], sparseMatrix[i][2]);
+    }
+}
 
 
 
